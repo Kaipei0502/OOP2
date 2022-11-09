@@ -11,22 +11,16 @@ class sellClass implements Runnable{
         t.start();
     }
 
-    public class week3_sellClass{
-        public static void main(String[] args){
-            sellClass tA = new sellClass("Machine 1");
-            sellClass tB = new sellClass("Machine 2");
-            sellClass tC = new sellClass("Machine 3");
-            sellClass tD = new sellClass("Machine 4");
-        }
-    }
-
     @Override
     public void run(){
         Random a = new Random();
-        num = 1 + a.nextInt(3);
-        while(buyTicket(num) == true){
-            ticket += num;
-            System.out.println(t.getName() +"賣出"+ ticket+"張");
+        while(allticket != 0){
+            num = 1 + a.nextInt(4);
+            while(buyTicket(num) == true){
+                ticket += num;
+                System.out.println(t.getName() +"賣出"+ ticket+"張");
+                num = 1 + a.nextInt(4);
+            }
         }
         System.out.println(t.getName() +"總共賣出:"+ ticket+"張");
     }
@@ -40,5 +34,11 @@ class sellClass implements Runnable{
         }
     }
 }
-
-    
+public class week3_sellClass{
+    public static void main(String[] args){
+        sellClass tA = new sellClass("Machine 1");
+        sellClass tB = new sellClass("Machine 2");
+        sellClass tC = new sellClass("Machine 3");
+        sellClass tD = new sellClass("Machine 4");
+    }
+}
